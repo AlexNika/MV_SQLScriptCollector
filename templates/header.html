@@ -1,0 +1,45 @@
+{% block header %}
+    <nav class="navbar navbar-expand-sm bg-body-tertiary" aria-label="Third navbar example">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="https://www.mvideo.ru/">
+                <img loading="lazy" alt="https://www.mvideo.ru/" width="117" height="48"
+                     src="https://cms.mvideo.ru/magnoliaPublic/dam/jcr:a036485b-d677-429c-9886-1ab6b62e31fd">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarsExample03">
+                <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+                    <li class="nav-item">
+                        <a class="nav-link greeting" aria-current="page" href="{{ url_for('core.home') }}">Главная</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle greeting" href="{{ url_for('scripts.scripts_list') }}"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            SQL скрипты
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Добавить SQL скрипт вручную</a></li>
+                            <li><a class="dropdown-item" href="#">Загрузить SQL скрипт из папки</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('scripts.scripts_list') }}">Список SQL скриптов</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form role="search">
+                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                </form>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
