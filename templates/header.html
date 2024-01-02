@@ -5,7 +5,8 @@
                 <img loading="lazy" alt="https://www.mvideo.ru/" width="117" height="48"
                      src="https://cms.mvideo.ru/magnoliaPublic/dam/jcr:a036485b-d677-429c-9886-1ab6b62e31fd">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03"
+                    aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarsExample03">
@@ -19,20 +20,48 @@
                             SQL скрипты
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Добавить SQL скрипт вручную</a></li>
-                            <li><a class="dropdown-item" href="#">Загрузить SQL скрипт из папки</a></li>
-                            <li><a class="dropdown-item" href="{{ url_for('scripts.scripts_list') }}">Список SQL скриптов</a></li>
+                            <li>
+                                <a class="dropdown-item greeting" href="{{ url_for('scripts.add_script') }}">
+                                    Добавить SQL скрипт вручную
+                                </a>
+                            </li>
+                            <li><a class="dropdown-item greeting" href="#">Загрузить SQL скрипт из папки</a></li>
+                            <li>
+                                <a class="dropdown-item greeting" href="{{ url_for('scripts.scripts_list') }}">
+                                    Список SQL скриптов
+                                </a>
+                            </li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                    </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
+                        <a class="nav-link dropdown-toggle greeting" href="{{ url_for('users.users_list') }}"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            Пользователи
+                        </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            <li>
+                                <a class="dropdown-item greeting" href="{{ url_for('users.register') }}">
+                                    Регистрация нового пользователя
+                                </a>
+                            </li>
+                            {% if not current_user.is_authenticated %}
+                                <li>
+                                    <a class="dropdown-item greeting" href="{{ url_for('users.login') }}">
+                                        Авторизация
+                                    </a>
+                                </li>
+                            {% endif %}
+                            {% if current_user.is_authenticated %}
+                                <li>
+                                    <a class="dropdown-item greeting" href="{{ url_for('users.users_list') }}">
+                                        Список пользователей (адм.)
+                                    </a>
+                                </li>
+                                <li><a class="dropdown-item greeting" href="#">Мои скрипты</a></li>
+                                <li>
+                                    <a class="dropdown-item greeting" href="{{ url_for('users.logout') }}">Выйти</a>
+                                </li>
+                            {% endif %}
                         </ul>
                     </li>
                 </ul>
