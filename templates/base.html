@@ -18,11 +18,29 @@
           href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
     <link rel="preload stylesheet" type="text/css" as="style"
           href="{{ url_for('static', filename='css/styles.css') }}">
+    {% block css %}{% endblock %}
 </head>
 <body class="d-flex flex-column h-100">
 {% block header %}
     {% include 'header.html' %}
 {% endblock %}
+<!-- messages -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div class="row pt-3">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    {% endif %}
+{% endwith %}
 {% block content %}
 {% endblock %}
 {% block footer %}
